@@ -1,7 +1,5 @@
 var screenWidth = screen.availWidth,
-    screenHeight = screen.availHeight,
-    minWidth=450,
-    minHeight=90;
+    screenHeight = screen.availHeight;
     
 chrome.runtime.requestUpdateCheck(updateCheck);
 
@@ -17,13 +15,13 @@ chrome.app.runtime.onLaunched.addListener(
             'index.html', 
             {
                 bounds: {
-                    width   : minWidth,
-                    height  : minHeight,
-                    left    : Math.round(screenWidth-minWidth),
-                    top     : Math.round(screenHeight-minHeight)
+                    width   : screenWidth,
+                    height  : screenHeight,
+                    left    : 0,
+                    top     : 0
                 },
-                resizable:false,
-                frame:'none'
+                frame:'none',
+                state:'fullsreen'
             }
         );
     }
