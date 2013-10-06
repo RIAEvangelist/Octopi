@@ -1,0 +1,26 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "manifest_version": 2,
+    "name": "TWEEWOo BOOMBOX",
+    "description":"Access Untapped Indie Music from the Chrome App Store using the BOOMBOX Radio App.",
+    "minimum_chrome_version": "28",
+    "version": "0.0.1.0",
+    "icons": {
+        "16" : "icon_16.png",
+        "32" : "icon_32.png",
+        "64" : "icon_64.png",
+        "128": "icon_128.png",
+        "256": "icon_256.png"
+    },
+    "app": {
+        "background": {
+            "scripts": [
+                "main.js"
+            ]
+        }
+    },
+    "permissions": [
+        "webview"
+    ]
+}
