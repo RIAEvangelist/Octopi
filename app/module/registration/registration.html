@@ -1,62 +1,106 @@
 <ul>
-    <li class='appModule'
-        data-moduletype="register-photo"></li>
-    
-    <li>
-        <input 
-            id="register-value-name"  
-            placeholder="Name" />
-    </li>
-    
-    <li>
-        <ul>
-            <li>
-                <input
-                    id="register-value-address1" 
-                    placeholder="Address Line 1" />
-            </li>
-            <li>
-                <input 
-                    id="register-value-address2"
-                    placeholder="Address Line 2" />
-            </li>
-            <li>
-                <input 
-                    id="register-value-city"
-                    placeholder="City" />
-            </li>
-            <li>
-                <input 
-                    id="register-value-state"
-                    placeholder="State" />
-            </li>
-            <li>
-                <input 
-                    id="register-value-postcode"
-                    placeholder="Postal Code" />
-            </li>
-        </ul>
-    </li>
-    
-    <li class='appModule'
-        data-moduletype="register-gender"></li>
+    <div class='registration-left'>
+        <li class='appModule register-photo'
+            data-moduletype="register-photo"
+            data-html='true'
+            data-css='true'></li>
         
-    <li id="register-birthdate">
-        <input id="register-value-birthdate" type='date'/>
-    </li>
+        <li>
+            <h2 id='register-name'>Name :</h2>
+            <input 
+                id="register-value-name"  
+                placeholder="Name" />
+        </li>
+    </div>
     
-    <li id="register-name"></li>
-    <li id="register-name"></li>
-    <li id="register-name"></li>
-    <li id="register-name"></li>
-    <li id="register-name"></li>
-    <li id="register-name"></li>
-    <li id="register-name"></li>
-    
-age or age range (calculated if birthdate provided)
-photo
-fingerprint?
-registration location
-status
-
+    <div class='registration-right'>
+        <li id="register-gender">
+            <h2 id='register-gender'>Gender :</h2>
+            <input 
+                type="radio" 
+                name="register-gender-value" 
+                value="male"/><span>Male</span>
+            <input 
+                type="radio" 
+                name="register-gender-value" 
+                value="female"/><span>Female</span>
+            <input 
+                type="radio" 
+                name="register-gender-value" 
+                value="female"/><span>Other</span>
+        </li>
+            
+        <li id="register-birthdate">
+            <h2>Birthdate</h2>
+            <input 
+                id="register-value-birthdate" 
+                type='date'/>
+            <h3>- OR Age Range -</h3>
+            <input 
+                class='input-half' 
+                id="register-value-agelow" 
+                placeholder="Lower end" 
+                type='number'/> -
+            <input 
+                class='input-half' 
+                id="register-value-agehigh" 
+                placeholder="Higher end"
+                type='number'/>
+        </li>
+        
+        <li id="register-status">
+            <h2>
+                Status
+            </h2>
+            <input 
+                type="radio" 
+                name="register-status-value" 
+                value="healthy"/><span>Healthy</span><br>
+            <input 
+                type="radio" 
+                name="register-status-value" 
+                value="injured"/><span>Injured</span>
+            <input 
+                type="radio" 
+                name="register-status-value" 
+                value="critical"/><span>Critical</span>
+            <input 
+                type="radio" 
+                name="register-status-value" 
+                value="dead"/><span>Deceased</span>
+            <h3 id='register-status-photos'>Status Photos :</h2>
+            <ul class='appModule'
+                data-moduletype="register-status-photo"></ul>
+        </li>
+        
+        <li><h2 id='register-address'>Address :</h2>
+            <ul>
+                <li>
+                    <input
+                        id="register-value-address1" 
+                        placeholder="Address Line 1" />
+                </li>
+                <li>
+                    <input 
+                        id="register-value-address2"
+                        placeholder="Address Line 2" />
+                </li>
+                <li>
+                    <input 
+                        id="register-value-city"
+                        placeholder="City" />
+                </li>
+                <li>
+                    <input 
+                        id="register-value-state"
+                        placeholder="State" />
+                </li>
+                <li>
+                    <input 
+                        id="register-value-postcode"
+                        placeholder="Postal Code" />
+                </li>
+            </ul>
+        </li>
+    </div>
 </ul>

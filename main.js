@@ -21,7 +21,7 @@ chrome.app.runtime.onLaunched.addListener(
                     top     : 0
                 },
                 frame:'none',
-                state:'fullsreen'
+                state:'fullscreen'
             }
         );
     }

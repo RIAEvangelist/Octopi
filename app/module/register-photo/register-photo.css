@@ -1,0 +1,10 @@
+.register-photo canvas,
+.register-photo video{
+    width:calc(50% - 15px);
+    margin:5px;
+}
+
+.register-photo video{
+    -webkit-transform:rotateY(180deg);
+    transform:rotateY(180deg);
+}

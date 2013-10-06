@@ -1,0 +1,38 @@
+.registration{
+    width:100%;
+    z-index:0;
+}
+
+.registration ul{
+    width:100%;
+    padding:30px 0 0;
+    list-style:none;
+}
+
+.registration ul ul{
+    padding:0;
+    margin:0;
+}
+
+.registration ul > div > li{
+    border:1px solid rgb(200,200,200);
+    border-radius:5px;
+    margin:15px;
+    padding:10px;
+    background:rgb(20,20,20);
+}
+
+.registration-left,
+.registration-right{
+    width:calc(50% - 15px);
+}
+
+.registration-left{
+    position:absolute;
+    top:30px;
+    left:5px;
+}
+
+.registration-right{
+    margin-left:calc(50% + 15px);   
+}
