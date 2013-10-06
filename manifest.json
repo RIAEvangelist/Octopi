@@ -1,11 +1,10 @@
 {
-"update_url": "https://clients2.google.com/service/update2/crx",
-
+    "update_url": "https://clients2.google.com/service/update2/crx",
     "manifest_version": 2,
-    "name": "TWEEWOo BOOMBOX",
-    "description":"Access Untapped Indie Music from the Chrome App Store using the BOOMBOX Radio App.",
+    "name": "Octopi",
+    "description":"Disaster, War, Conflict, Revolution, Zombie Apocalypse registry, messaging, and reporting system.",
     "minimum_chrome_version": "28",
-    "version": "0.0.1.0",
+    "version": "0.0.0.1",
     "icons": {
         "16" : "icon_16.png",
         "32" : "icon_32.png",
@@ -21,6 +20,6 @@
         }
     },
     "permissions": [
-        "webview"
+        "videoCapture"
     ]
 }
