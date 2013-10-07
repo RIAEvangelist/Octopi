@@ -42,3 +42,8 @@
 .registration-right{
     margin-left:calc(50% + 15px);
 }
+
+.input-agerange{
+    width: 45%;
+    font-size:24px;
+}
