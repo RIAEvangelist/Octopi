@@ -3,7 +3,7 @@
     "manifest_version": 2,
     "name": "Octopi",
     "description":"Disaster, War, Conflict, Revolution, Zombie Apocalypse registry, messaging, and reporting system.",
-    "minimum_chrome_version": "28",
+    "minimum_chrome_version": "30",
     "version": "0.0.0.1",
     "icons": {
         "16" : "icon-16.png",
@@ -20,6 +20,9 @@
         }
     },
     "permissions": [
-        "videoCapture"
+        "videoCapture",
+        "unlimitedStorage",
+        "system.storage",
+        {"fileSystem": ["write", "retainEntries", "directory"]} 
     ]
 }
