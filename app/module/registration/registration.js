@@ -33,8 +33,8 @@
             app.trigger('export-data');
         }
         
-        function exportData(){
-            //console.log('import-data');
+        function importData(){
+            console.log('import-data');
 
             app.trigger('import-data');
         }

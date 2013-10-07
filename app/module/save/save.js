@@ -64,7 +64,7 @@
                     accepts:[
                         {
                             description : 'Octopi data',
-                            extensions  : ['.octopi']
+                            extensions  : ['octopi']
                         }
                     ]
                 },
@@ -167,7 +167,7 @@
                     accepts:[
                         {
                             description : 'Octopi People List',
-                            extensions  : ['.html']
+                            extensions  : ['html']
                         }
                     ]
                 },

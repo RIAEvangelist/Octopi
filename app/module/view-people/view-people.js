@@ -50,7 +50,7 @@
         }
 
         function renderPerson(data, template){
-            console.log(data);
+            //console.log(data);
 
             if(!template){
 
