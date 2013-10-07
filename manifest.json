@@ -23,6 +23,6 @@
         "videoCapture",
         "storage",
         "unlimitedStorage",
-        {"fileSystem": ["write", "retainEntries", "directory"]} 
+        {"fileSystem": ["write"]} 
     ]
 }

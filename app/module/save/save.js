@@ -1,7 +1,7 @@
 (
     function(){
-        var moduleName = 'save';
-        
+        var moduleName = 'save',
+            exportData = false;
         
         function storeData(data){
             var person  = {},
@@ -42,12 +42,74 @@
         function getPeople(){
             chrome.storage.local.get(
                 null,
-                exportData
+                formatExportFile
             );
         }
         
-        function exportData(data){
-            console.log(data)
+        function formatExportFile(data){
+            /*
+            exportData=btoa(
+                JSON.stringify(data)
+            );
+            */
+            exportData=JSON.stringify(data);
+            
+            chrome.fileSystem.chooseEntry(
+                {
+                    type:'saveFile',
+                    suggestedName:'people.octopi',
+                    accepts:[
+                        {
+                            description : 'Octopi data',
+                            extensions  : ['.octopi']
+                        }
+                    ]
+                },
+                exportToFile
+            )
+        }
+        
+        function exportToFile(file){
+            file.createWriter(
+                function(writer) {
+                    writer.onerror = errorWritingFile;
+                    writer.onwriteend = fileSaved;
+                    write.truncate();
+                    writer.write(
+                        new Blob(
+                            [
+                                'howdy'
+                            ], 
+                            {
+                                type: 'octopi'
+                            }
+                        )
+                    );  
+                }, 
+                errorWritingFile
+            );
+        }
+        
+        function errorWritingFile(e){
+            console.log(e);
+            app.trigger(
+                'show-dialog',
+                {
+                    type: 'warning',
+                    msg : 'Error Exporting Octopi Data'
+                }
+            )
+        }
+        
+        function fileSaved(e){
+            console.log(e);
+            app.trigger(
+                'show-dialog',
+                {
+                    type: 'notification',
+                    msg : 'Octopi Data Saved'
+                }
+            )
         }
         
         function render(el){
