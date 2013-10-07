@@ -16,7 +16,7 @@ chrome.app.runtime.onLaunched.addListener(
             {
                 bounds: {
                     width   : screenWidth/2,
-                    height  : screenHeight,
+                    height  : Math.round(screenHeight),
                     left    : 0,
                     top     : 0
                 },
