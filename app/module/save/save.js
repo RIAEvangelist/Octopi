@@ -2,7 +2,11 @@
     function(){
         var moduleName      = 'save';
         
+        
         function storeData(data){
+            chrome.storage.local.set(
+                data
+            );
             console.log(data);
         }
         

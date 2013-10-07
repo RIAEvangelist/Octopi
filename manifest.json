@@ -21,8 +21,8 @@
     },
     "permissions": [
         "videoCapture",
+        "storage",
         "unlimitedStorage",
-        "system.storage",
         {"fileSystem": ["write", "retainEntries", "directory"]} 
     ]
 }
