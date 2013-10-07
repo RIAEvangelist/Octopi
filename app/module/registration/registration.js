@@ -15,8 +15,12 @@
             );
             document.getElementById("register-button-show-people").addEventListener(
                 "click",
-                exportData
+                getPeopleList
             );
+        }
+
+        function getPeopleList(){
+            app.trigger('get-people-list');
         }
 
         function exportData(){

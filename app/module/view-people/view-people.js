@@ -8,7 +8,13 @@
 
         function buildPeopleList(data){
 
-            console.log(data);
+            for(var key in data){
+               renderPerson(data[key]);
+           };
+
+        }
+
+        function renderPerson(){
 
         }
 
@@ -18,9 +24,10 @@
                 null,
                 buildPeopleList
             );
+
         }
 
-        app.on('', getPeopleList);
+        app.on('get-people-list', getPeopleList);
 
         exports(moduleName,render);
     }
