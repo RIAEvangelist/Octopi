@@ -16,7 +16,7 @@
 
             for(var key in data){
                peopleList += renderPerson(data[key]);
-           }
+            }
 
             app.trigger(
                'show-dialog',
@@ -26,6 +26,29 @@
                }
             );
 
+        }
+        
+        function buildSelfContainedList(data){
+            var xhr = new XMLHttpRequest();
+            var peopleList = '';
+            
+            xhr.open('GET', 'app/portable/templates/people-list.html', true);
+            xhr.onload = function(e) {
+                var template=this.response;
+                template=template.replace(
+                    '${people-list}',
+                    peopleList
+                );
+                app.trigger('portable-people-list-ready',template);
+            }
+            
+            for(var key in data){
+               peopleList += renderPerson(data[key]);
+            }
+            
+            console.log(peopleList);
+            
+            xhr.send();
         }
 
         function renderPerson(data, template){
@@ -65,9 +88,9 @@
             );
 
         }
-
+    
+        app.on('get-portable-people-list',buildSelfContainedList);
         app.on('get-people-list', getPeopleList);
-
         exports(moduleName,render);
     }
 )();

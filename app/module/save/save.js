@@ -1,7 +1,8 @@
 (
     function(){
         var moduleName = 'save',
-            exportData = false;
+            exportData = false,
+            exportHTML = false;
         
         function storeData(data){
             var person  = {},
@@ -52,6 +53,8 @@
                 JSON.stringify(data)
             );
             */
+            
+            app.trigger('get-portable-people-list',data);
             exportData=JSON.stringify(data);
             
             chrome.fileSystem.chooseEntry(
@@ -66,7 +69,7 @@
                     ]
                 },
                 exportToFile
-            )
+            );
         }
         
         function exportToFile(file){
@@ -74,6 +77,17 @@
                 function(writer) {
                     writer.onerror = errorWritingFile;
                     writer.onwriteend = fileTruncated;
+                    writer.truncate(0);
+                }, 
+                errorWritingFile
+            );
+        }
+        
+        function exportHTMLToFile(file){
+            file.createWriter(
+                function(writer) {
+                    writer.onerror = errorWritingFile;
+                    writer.onwriteend = htmlTruncated;
                     writer.truncate(0);
                 }, 
                 errorWritingFile
@@ -106,6 +120,22 @@
             exportData=false;
         }
         
+        function htmlTruncated(e){
+            var writer=e.target;
+            writer.onwriteend = htmlSaved;
+            writer.write(
+                new Blob(
+                    [
+                        exportHTML
+                    ], 
+                    {
+                        type: 'text/html'
+                    }
+                )
+            );
+            exportHTML=false;
+        }
+        
         function fileSaved(e){
             console.log(e);
             app.trigger(
@@ -117,10 +147,27 @@
             )
         }
         
+        function exportHTML(html){
+            chrome.fileSystem.chooseEntry(
+                {
+                    type:'saveFile',
+                    suggestedName:'Octopi-List.html',
+                    accepts:[
+                        {
+                            description : 'Octopi People List',
+                            extensions  : ['.html']
+                        }
+                    ]
+                },
+                exportHTMLToFile
+            );
+        }
+        
         function render(el){
         	
         }
         
+        app.on('portable-people-list-ready',exportHTML);
         app.on('export-data',getPeople);
         app.on('save',storeData);
         exports(moduleName,render);
