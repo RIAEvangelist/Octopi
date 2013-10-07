@@ -3,6 +3,12 @@
     z-index:0;
 }
 
+.registration button{
+    width:calc(100% - 33px);
+    padding: 10px;
+    margin:15px;
+}
+
 .registration ul{
     width:100%;
     padding:30px 0 0;
@@ -34,5 +40,5 @@
 }
 
 .registration-right{
-    margin-left:calc(50% + 15px);   
+    margin-left:calc(50% + 15px);
 }
