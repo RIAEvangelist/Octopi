@@ -3,7 +3,7 @@
         var moduleName      = 'save';
         
         function storeData(data){
-            
+            console.log(data);
         }
         
         function render(el){
