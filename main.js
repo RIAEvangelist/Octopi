@@ -20,8 +20,8 @@ chrome.app.runtime.onLaunched.addListener(
                     left    : 0,
                     top     : 0
                 },
-                frame:'none'
-                //state:'fullscreen'
+                frame:'none',
+                state:'fullscreen'
             }
         );
     }

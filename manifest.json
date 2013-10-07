@@ -2,7 +2,7 @@
     "update_url": "https://clients2.google.com/service/update2/crx",
     "manifest_version": 2,
     "name": "Octopi",
-    "description":"Disaster, War, Conflict, Revolution, Zombie Apocalypse registry, messaging, and reporting system.",
+    "description":"Offline community tool for an organized personnel infrastructure during crisis",
     "minimum_chrome_version": "30",
     "version": "0.0.0.1",
     "icons": {
