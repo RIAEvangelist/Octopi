@@ -46,8 +46,6 @@
                peopleList += renderPerson(data[key]);
             }
             
-            console.log(peopleList);
-            
             xhr.send();
         }
 

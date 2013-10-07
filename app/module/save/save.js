@@ -137,7 +137,7 @@
         }
         
         function fileSaved(e){
-            console.log(e);
+            //console.log(e);
             app.trigger(
                 'show-dialog',
                 {
@@ -147,7 +147,19 @@
             )
         }
         
-        function exportHTML(html){
+        function htmlSaved(e){
+            //console.log(e);
+            app.trigger(
+                'show-dialog',
+                {
+                    type: 'notification',
+                    msg : 'Octopi Portable List Saved'
+                }
+            )
+        }
+        
+        function exportHTMLTemplate(html){
+            exportHTML=html;
             chrome.fileSystem.chooseEntry(
                 {
                     type:'saveFile',
@@ -167,7 +179,7 @@
         	
         }
         
-        app.on('portable-people-list-ready',exportHTML);
+        app.on('portable-people-list-ready',exportHTMLTemplate);
         app.on('export-data',getPeople);
         app.on('save',storeData);
         exports(moduleName,render);
