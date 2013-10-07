@@ -26,6 +26,7 @@
         }
 
         app.on('show-dialog', show);
+        app.on('hide-dialog', hide);
 
         exports(moduleName,render);
     }
