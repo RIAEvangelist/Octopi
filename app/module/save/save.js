@@ -39,12 +39,23 @@
             app.trigger('hide-dialog');
         }
         
+        function getPeople(){
+            chrome.storage.local.get(
+                null,
+                exportData
+            );
+        }
+        
+        function exportData(data){
+            console.log(data)
+        }
+        
         function render(el){
         	
         }
         
-        exports(moduleName,render);
-        
+        app.on('export-data',getPeople);
         app.on('save',storeData);
+        exports(moduleName,render);
     }
 )();
