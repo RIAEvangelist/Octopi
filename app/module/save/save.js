@@ -17,13 +17,16 @@
             );
             app.trigger(
                 'show-dialog',
-                [
-                    '<h1>Saved</h1><p>',
-                    data.name,
-                    '<hr><img src="',
-                    data.mugshot,
-                    '" /></p>'
-                ].join('')
+                {
+                    type : 'notify',
+                    msg:[
+                        '<h1>Saved</h1><p><img style="float:left" width="100" src="',
+                        data.mugshot,
+                        '" />',
+                        data.name,
+                        '</p>'
+                    ].join('')
+                }
             );
             
             setTimeout(
@@ -33,7 +36,7 @@
         }
         
         function hideSavedNotice(){
-            app.on('hide-dialog');
+            app.trigger('hide-dialog');
         }
         
         function render(el){
