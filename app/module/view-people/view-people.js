@@ -8,13 +8,52 @@
 
         function buildPeopleList(data){
 
+            var peopleList = '';
+
+            app.trigger(
+                'clear-dialog'
+            );
+
             for(var key in data){
-               renderPerson(data[key]);
-           };
+               peopleList += renderPerson(data[key]);
+           }
+
+            app.trigger(
+               'show-dialog',
+               {
+                   msg:  peopleList,
+                   type: 'html-fullscreen'
+               }
+            );
 
         }
 
-        function renderPerson(){
+        function renderPerson(data, template){
+            console.log(data);
+
+            if(!template){
+
+                template = document.getElementById('template-person-list').innerHTML;
+            }
+
+            var   vars     = {};
+
+            for(var key in data){
+                if(typeof data[key] == 'object'){
+                    template = renderPerson(data[key], template);
+                    continue;
+                }
+                if(!vars[key]){
+                    vars[key] = new RegExp('\\$\\{'+key+'\\}','g');
+                }
+                template=template.replace(
+                    vars[key],
+                    data[key]
+               );
+
+            }
+
+            return template;
 
         }
 
