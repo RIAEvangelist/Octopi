@@ -26,7 +26,7 @@
         function exportData(){
             console.log('export-data');
 
-            app.trigger('export-data')
+            app.trigger('export-data');
         }
 
         function clearFields(){
@@ -90,13 +90,13 @@
             var dateValue   = document.getElementById('register-value-birthdate').value;
             var date        = (dateValue) ?
                                 dateValue :
-                                false;
+                                '';
 
             var ageRangeLowValue  = document.getElementById('register-value-agelow').value;
             var ageRangeHighValue = document.getElementById('register-value-agehigh').value;
             var ageRange          = (ageRangeLowValue && ageRangeHighValue) ?
                                     { low: ageRangeLowValue, high: ageRangeHighValue } :
-                                    false;
+                                    { low: '', high: '' };
 
             var address1 = document.getElementById('register-value-address1').value;
             var address2 = document.getElementById('register-value-address2').value;

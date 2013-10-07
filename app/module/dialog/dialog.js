@@ -12,16 +12,26 @@
         }
 
         function show(data){
-            var el   = document.getElementById("appModule-dialog");
+            switch(data.type){
+                case 'html-fullscreen' :
+                    dialog.classList.add('html-fullscreen');
+                break;
 
-            el.querySelector('.dialog-msg').innerHTML = data.msg;
+            }
+            dialog.querySelector('.dialog-msg').innerHTML = data.msg;
             dialog.classList.remove('hide');
         }
 
         function hide(){
             dialog.classList.add('hide');
+            dialog.classList.remove('html-fullscreen');
         }
 
+        function clearDialog(){
+            dialog.querySelector('.dialog-msg').innerHTML = '';
+        }
+
+        app.on('clear-dialog', clearDialog);
         app.on('show-dialog', show);
         app.on('hide-dialog', hide);
 
