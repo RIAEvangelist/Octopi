@@ -15,13 +15,13 @@
         		},
         		width   = 400,
         		height  = 266;
-            
+
             video.setAttribute('width', width);
             video.setAttribute('height', height);
             canvas.setAttribute('width', width);
             canvas.setAttribute('height', height);
             
-            if(navigator.getUserMedia) {
+        	if(navigator.getUserMedia) {
         		navigator.getUserMedia(videoObj, function(stream) {
         			video.src = stream;
         			video.play();
@@ -32,22 +32,32 @@
         			video.play();
         		}, errBack);
         	}
-        	
+
         	document.getElementById("register-photo-mugshot-button").addEventListener(
-        	    "click", 
+        	    "click",
         	    function() {
             	    context.drawImage(video, 0, 0, width, height);
                 }
             );
         }
-        
+
+
         function render(el){
         	setTimeout(
                 initVideo,
                 100
             )
         }
-        
-        exports(moduleName,render);    
+
+        function reset(){
+            var canvas  = document.getElementById("register-photo-mugshot"),
+                context = canvas.getContext("2d");
+                context.clearRect ( 0 , 0 , canvas.width , canvas.height );
+
+        }
+
+        app.on('save', reset);
+
+        exports(moduleName,render);
     }
 )();
