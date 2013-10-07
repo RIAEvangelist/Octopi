@@ -16,9 +16,6 @@
 
             el.querySelector('.dialog-msg').innerHTML = data.msg;
             dialog.classList.remove('hide');
-
-
-
         }
 
         function hide(){

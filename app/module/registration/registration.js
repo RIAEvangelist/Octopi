@@ -13,6 +13,10 @@
                 "click",
                 exportData
             );
+            document.getElementById("register-button-show-people").addEventListener(
+                "click",
+                exportData
+            );
         }
 
         function exportData(){
@@ -44,8 +48,6 @@
             document.getElementById('register-photo-mugshot').width = document.getElementById('register-photo-mugshot').width
         }
 
-
-
         function buildPerson(){
             var mugshot = document.getElementById('register-photo-mugshot').toDataURL("image/png");
             var name    = document.getElementById('register-value-name').value;
@@ -58,7 +60,7 @@
                 };
 
 
-                app.trigger('show-dialog', data);
+                showDialog(data);
                 return;
             }
             else{
@@ -73,7 +75,7 @@
                 };
 
 
-                app.trigger('show-dialog', data);
+                showDialog(data);
                 return;
             }
             else{
@@ -117,6 +119,11 @@
             app.trigger('save', person);
             clearFields();
 
+        }
+
+
+        function showDialog(data){
+            app.trigger('show-dialog', data);
         }
 
         exports(moduleName,render);
