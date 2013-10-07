@@ -13,6 +13,10 @@
                 "click",
                 exportData
             );
+            document.getElementById("register-button-import").addEventListener(
+                "click",
+                importData
+            );
             document.getElementById("register-button-show-people").addEventListener(
                 "click",
                 getPeopleList
@@ -24,9 +28,15 @@
         }
 
         function exportData(){
-            console.log('export-data');
+            //console.log('export-data');
 
             app.trigger('export-data');
+        }
+        
+        function exportData(){
+            //console.log('import-data');
+
+            app.trigger('import-data');
         }
 
         function clearFields(){
