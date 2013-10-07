@@ -70,36 +70,17 @@
         }
         
         function exportToFile(file){
-            fileEntry.remove(
-                function() {
-                    console.log('File removed.');
-                }, 
-                function(e) {
-                    console.log(e);
-                },
-            );
             file.createWriter(
                 function(writer) {
                     writer.onerror = errorWritingFile;
-                    writer.onwriteend = fileSaved;
-                    write.truncate();
-                    writer.write(
-                        new Blob(
-                            [
-                                'howdy'
-                            ], 
-                            {
-                                type: 'octopi'
-                            }
-                        )
-                    );  
+                    writer.onwriteend = fileTruncated;
+                    writer.truncate(0);
                 }, 
                 errorWritingFile
             );
         }
         
         function errorWritingFile(e){
-            console.log(e);
             app.trigger(
                 'show-dialog',
                 {
@@ -107,6 +88,22 @@
                     msg : 'Error Exporting Octopi Data'
                 }
             )
+        }
+        
+        function fileTruncated(e){
+            var writer=e.target;
+            writer.onwriteend = fileSaved;
+            writer.write(
+                new Blob(
+                    [
+                        exportData
+                    ], 
+                    {
+                        type: 'octopi'
+                    }
+                )
+            );
+            exportData=false;
         }
         
         function fileSaved(e){

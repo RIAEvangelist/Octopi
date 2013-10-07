@@ -13,8 +13,8 @@
         		videoObj= { 
         		    "video": true 
         		},
-        		width   = 300,
-        		height  = 199;
+        		width   = 180,
+        		height  = 119;
 
             video.setAttribute('width', width);
             video.setAttribute('height', height);
