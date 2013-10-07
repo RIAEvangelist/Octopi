@@ -21,10 +21,11 @@ button{
     background:linear-gradient( to bottom, rgba(255,255,255,.5), rgba(255,255,255,.25));
     outline:none;
     box-shadow:0;
+    font-weight: bold;
 }
 
 button:hover{
-    box-shadow:0 0 4px rgba(255,255,255,.7);   
+    box-shadow:0 0 4px rgba(255,255,255,.7);
 }
 
 input{
