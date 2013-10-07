@@ -1,16 +1,18 @@
 (
     function(){
         var moduleName      = 'register-photo';
-
+        
         function errBack(error) {
-			console.log("Video capture error: ", error.code);
+			console.log("Video capture error: ", error.code); 
 		};
-
-        function render(el){
-        	var canvas  = document.getElementById("register-photo-mugshot"),
+        
+        function initVideo(){
+            var canvas  = document.getElementById("register-photo-mugshot"),
         		context = canvas.getContext("2d"),
         		video   = document.getElementById("register-photo-mugshot-video"),
-        		videoObj= { "video": true },
+        		videoObj= { 
+        		    "video": true 
+        		},
         		width   = 400,
         		height  = 266;
 
@@ -18,7 +20,7 @@
             video.setAttribute('height', height);
             canvas.setAttribute('width', width);
             canvas.setAttribute('height', height);
-
+            
         	if(navigator.getUserMedia) {
         		navigator.getUserMedia(videoObj, function(stream) {
         			video.src = stream;
@@ -37,6 +39,14 @@
             	    context.drawImage(video, 0, 0, width, height);
                 }
             );
+        }
+
+
+        function render(el){
+        	setTimeout(
+                initVideo,
+                100
+            )
         }
 
         function reset(){
