@@ -70,6 +70,14 @@
         }
         
         function exportToFile(file){
+            fileEntry.remove(
+                function() {
+                    console.log('File removed.');
+                }, 
+                function(e) {
+                    console.log(e);
+                },
+            );
             file.createWriter(
                 function(writer) {
                     writer.onerror = errorWritingFile;
