@@ -4,10 +4,21 @@
 
         function render(el){
 
-            document.getElementById("register-button-register-button").addEventListener(
+            document.getElementById("register-button-register").addEventListener(
                 "click",
                 buildPerson
-            )
+            );
+
+            document.getElementById("register-button-export").addEventListener(
+                "click",
+                exportData
+            );
+        }
+
+        function exportData(){
+            console.log('export-data');
+
+            app.trigger('export-data')
         }
 
         function clearFields(){
