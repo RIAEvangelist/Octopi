@@ -1,31 +1,13 @@
 (
     function(){
         var moduleName      = 'registration';
-        
+
         function render(el){
-
-
 
             document.getElementById("register-button-register-button").addEventListener(
                 "click",
-                registerPerson
+                buildPerson
             )
-        }
-
-        function registerPerson(){
-            var people = [];
-
-            var person = buildPerson();
-            if(!person)
-                return;
-
-            people.push(
-                person
-            );
-
-            console.log(people);
-            app.trigger('save', people);
-            clearFields();
         }
 
         function clearFields(){
@@ -59,9 +41,13 @@
 
             var gender  = document.querySelector('input[name="register-gender-value"]:checked');
             if(!gender){
-                var msg = 'no gender checked';
+                var data = {
+                    msg: 'Please choose a gender',
+                    type: 'warning'
+                };
 
-                app.trigger('show-dialog', msg);
+
+                app.trigger('show-dialog', data);
                 return;
             }
             else{
@@ -70,6 +56,13 @@
 
             var status   = document.querySelector('input[name="register-status-value"]:checked');
             if(!status){
+                var data = {
+                    msg: 'Please choose a status',
+                    type: 'warning'
+                };
+
+
+                app.trigger('show-dialog', data);
                 return;
             }
             else{
@@ -110,7 +103,8 @@
 
             };
 
-            return person;
+            app.trigger('save', person);
+            clearFields();
 
         }
 

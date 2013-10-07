@@ -1,19 +1,29 @@
 (
     function(){
         var moduleName      = 'dialog';
+        var dialog          = false;
 
         function render(el){
-            console.log('here');
-
-            // el.addEventListener(
-            //     'click',
-            //     controlEvent
-            // );
+            dialog = el;
+            document.getElementById("dialog-button").addEventListener(
+                "click",
+                hide
+            )
         }
 
-        function show(htmlStr){
-            console.log(htmlStr);
+        function show(data){
+            var msg  = data.msg,
+                type = data.type;
 
+            dialog.classList.remove('hide');
+
+
+
+
+        }
+
+        function hide(){
+            dialog.classList.add('hide');
         }
 
         app.on('show-dialog', show);
