@@ -41,3 +41,7 @@ input{
 input[type="radio"]{
     width:40px;
 }
+
+.hide{
+  display: none;
+}

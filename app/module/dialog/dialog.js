@@ -5,18 +5,17 @@
 
         function render(el){
             dialog = el;
-            document.getElementById("dialog-button").addEventListener(
+            document.getElementById('dialog-button').addEventListener(
                 "click",
                 hide
             )
         }
 
         function show(data){
-            var msg  = data.msg,
-                type = data.type;
+            var el   = document.getElementById("appModule-dialog");
 
+            el.querySelector('.dialog-msg').innerHTML = data.msg;
             dialog.classList.remove('hide');
-
 
 
 
@@ -27,6 +26,7 @@
         }
 
         app.on('show-dialog', show);
+        app.on('hide-dialog', hide);
 
         exports(moduleName,render);
     }
