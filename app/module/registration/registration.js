@@ -15,18 +15,67 @@
         function registerPerson(){
             var people = [];
 
+            var person = buildPerson();
+            if(!person)
+                return;
+
             people.push(
-                buildPerson()
+                person
             );
 
-            app.trigger('save', people);
             console.log(people);
+            app.trigger('save', people);
+            clearFields();
         }
+
+        function clearFields(){
+            var inputs          = document.getElementsByTagName('input');
+            var inputsLength    = inputs.length;
+
+            //clear inputs
+            for(var i=0; i< inputsLength; i++){
+                inputs[i].value = '';
+            }
+
+            //clear radios
+            var genderRadios = document.getElementsByName("register-gender-value");
+            for(var i=0;i<genderRadios.length;i++){
+                genderRadios[i].checked = false;
+            }
+
+            var statusRadios = document.getElementsByName("register-status-value");
+            for(var i=0;i<statusRadios.length;i++){
+                statusRadios[i].checked = false;
+            }
+
+            document.getElementById('register-photo-mugshot').width = document.getElementById('register-photo-mugshot').width
+        }
+
+
 
         function buildPerson(){
             var mugshot = document.getElementById('register-photo-mugshot').toDataURL("image/png");
             var name    = document.getElementById('register-value-name').value;
-            var gender  = document.querySelector('input[name="register-gender-value"]:checked').value;
+
+            var gender  = document.querySelector('input[name="register-gender-value"]:checked');
+            if(!gender){
+                var msg = 'no gender checked';
+
+                app.trigger('show-dialog', msg);
+                return;
+            }
+            else{
+                gender = gender.value;
+            }
+
+            var status   = document.querySelector('input[name="register-status-value"]:checked');
+            if(!status){
+                return;
+            }
+            else{
+                status = status.value;
+            }
+
 
             var dateValue   = document.getElementById('register-value-birthdate').value;
             var date        = (dateValue) ?
@@ -39,7 +88,6 @@
                                     { low: ageRangeLowValue, high: ageRangeHighValue } :
                                     false;
 
-            var status   = document.querySelector('input[name="register-status-value"]:checked').value;
             var address1 = document.getElementById('register-value-address1').value;
             var address2 = document.getElementById('register-value-address2').value;
             var city     = document.getElementById('register-value-city').value;
