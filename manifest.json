@@ -2,9 +2,11 @@
     "update_url": "https://clients2.google.com/service/update2/crx",
     "manifest_version": 2,
     "name": "Octopi",
+    "short_name":"Octopi",
     "description":"Offline community tool for an organized personnel infrastructure during crisis",
     "minimum_chrome_version": "30",
     "version": "0.0.0.1",
+    "offline_enabled": true,
     "icons": {
         "16" : "icon-16.png",
         "32" : "icon-32.png",
